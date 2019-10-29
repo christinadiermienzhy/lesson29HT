@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<script type="text/javascript">
+
+	let someObj = {
+			name:'Ivan',
+			surname:'Ivanov',
+			age:25,
+			hasPet:true
+		} 
+
+	const map = new Map;
+	map.set('name1', 'John');
+	map.set('name2', 'Oleg');
+	map.set('name3', 'Nick');
+	map.set('name4', 'Pavlo');
+
+
+	function getValues (obj) {
+		if ((typeof obj === 'object') && !(Object.is(obj,null))){
+		const result = []
+
+			if (obj instanceof Map){
+
+				for (var [key, value] of obj) {
+
+					if ( obj.has(key) ) {
+
+						result.push( value );
+					}
+				}
+				return result;
+
+			} else {
+
+				for (var key in obj){
+
+					if (obj.hasOwnProperty(key)){
+
+						result.push(obj[key])
+					}		
+				}
+				return result;
+			}
+		} else {
+
+			return 'Used parametr is not object';
+		}
+	}	
+
+	function getKeys (obj) {
+		if ((typeof obj === 'object') && !(Object.is(obj,null))){
+			const result = []
+
+			if (obj instanceof Map){
+
+				for (var [key, value] of obj){
+
+					if ( obj.has(key) ) {
+
+						result.push(key);
+					}
+				}
+				return result;
+			} else {
+
+				for (var key in obj){
+
+					if (obj.hasOwnProperty(key)){
+
+						result.push(key)
+					}	
+				}
+			return result;
+			}
+		} else {
+			return 'Used parametr is not object';
+		}	
+	}
+
+	function getEntries (obj){
+		if ((typeof obj === 'object') && !(Object.is(obj,null))){
+			const result = []
+
+			if (obj instanceof Map){
+
+					for (var [key, value] of obj){
+						if ( obj.has(key) ) {
+							result.push([[key],[value]]);
+						}
+					}
+					return result;
+			} else {
+
+					for (var key in obj){
+
+						if (obj.hasOwnProperty(key)){
+
+							result.push ([[key],[obj[key]]])
+						}
+						
+					}
+					return result;
+			}
+		} else {
+			return 'Used parametr is not object';
+		}		
+	}
+
+console.log( getValues (someObj))
+console.log( getKeys (someObj))
+console.log( getEntries (someObj))
+console.log(getValues  (map))
+console.log(getKeys  (map))
+console.log(getEntries  (map))
+
+
+	</script>
+</body> 
+</html>
